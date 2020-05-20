@@ -149,7 +149,7 @@ MEDIA_ROOT = '/data/media'
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 # STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
-
+POD_IP = os.getenv("POD_IP", "172.20.0.1")
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -168,7 +168,7 @@ LOGGING = {
         'file_handler': {
             'level': 'DEBUG',
             'class': 'logging.handlers.RotatingFileHandler',
-            'filename': LOG_PATH + '/goodrain.log',
+            'filename': LOG_PATH + '/goodrain.' + POD_IP + '.log',
             'maxBytes': 1024 * 1024 * 5,
             'backupCount': 5,
             'formatter': 'standard',
@@ -176,7 +176,7 @@ LOGGING = {
         'request_api': {
             'level': 'DEBUG',
             'class': 'logging.handlers.RotatingFileHandler',
-            'filename': LOG_PATH + '/request.log',
+            'filename': LOG_PATH + '/request.' + POD_IP + '.log',
             'maxBytes': 1024 * 1024 * 5,
             'backupCount': 5,
             'formatter': 'standard',
